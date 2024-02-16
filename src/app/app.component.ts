@@ -2,20 +2,23 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SettingsComponent } from './settings/settings.component';
-import { AiComponent} from './ai/ai.component';
+import { AiComponent } from './ai/ai.component';
 import { SequencerComponent } from './sequencer/sequencer.component';
+import { VoicesComponent } from './voices/voices.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,
+  imports: [
+    RouterOutlet,
     MatTabsModule,
     SettingsComponent,
     AiComponent,
-    SequencerComponent
+    VoicesComponent,
+    SequencerComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'pimidi_ui';

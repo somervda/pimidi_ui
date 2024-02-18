@@ -1,32 +1,49 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [ReactiveFormsModule,MatCardModule
-],
+  imports: [ReactiveFormsModule, MatCardModule, MatCardModule, MatInputModule
+  ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
 })
 export class SettingsComponent {
   settingsForm: FormGroup;
-  settings: undefined;
+  cvMaxVolts: number = 5;
+  cvMidiChannel: number = 1;
+  cvMinHertz: number = 8;
+  midiDisplay: boolean = true;
+  midiDefaultChannel: number = 1;
+
   constructor(private fb: FormBuilder) {
     this.settingsForm = this.fb.group({
-      pumpOnSeconds: [
-        this.settings?.pumpOnSeconds,
+      cvMaxVolts: [
+        this.cvMaxVolts,
         [
           Validators.required,
-          Validators.min(30),
-          Validators.max(500),
-          Validators.pattern('^[0-9]*$'),
-        ],
-      ])
+          Validators.min(0),
+          Validators.max(12)
+        ]
+      ]
+    },
+      {
+        cvMidiChannel: [
+          this.cvMidiChannel,
+          [
+            Validators.required,
+            Validators.min(1),
+            Validators.max(16)
+          ]
+        ]
+      })
 
-   }
+  }
 
 }

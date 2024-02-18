@@ -1,1 +1,152 @@
-<p>settings works!</p>
+<mat-card style="border: grey; margin: 5px; max-width: 1000px">
+    <mat-card-content>
+      <div [formGroup]="settingsForm">
+        <div class="gridwrapper2">
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="pumpOnSeconds"
+                placeholder="Pump On Time (Seconds)"
+              />
+              <mat-error
+                *ngIf="
+                  settingsForm.controls['pumpOnSeconds'].hasError('required')
+                "
+              >
+                Is required.
+              </mat-error>
+              <mat-error
+                *ngIf="settingsForm.controls['pumpOnSeconds'].hasError('min')"
+              >
+                Must be more than or equal to 30
+              </mat-error>
+              <mat-error
+                *ngIf="settingsForm.controls['pumpOnSeconds'].hasError('max')"
+              >
+                Must be less or equal to 500
+              </mat-error>
+              <mat-error
+                *ngIf="settingsForm.controls['pumpOnSeconds'].hasError('pattern')"
+              >
+                Must be numeric.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <!-- webcam expiry minutes  -->
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="camOnMinutes"
+                placeholder="Webcam Expiry (Minutes)"
+              />
+              <mat-error
+                *ngIf="settingsForm.controls['camOnMinutes'].hasError('required')"
+              >
+                Is required.
+              </mat-error>
+              <mat-error
+                *ngIf="settingsForm.controls['camOnMinutes'].hasError('max')"
+              >
+                Must be less than or equal to 30
+              </mat-error>
+              <mat-error
+                *ngIf="settingsForm.controls['camOnMinutes'].hasError('min')"
+              >
+                Must be greater than 5
+              </mat-error>
+              <mat-error
+                *ngIf="settingsForm.controls['camOnMinutes'].hasError('pattern')"
+              >
+                Must be numeric.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <!-- Trigger Pump if it is under this soil moisture value -->
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="pumpMSTriggerOn"
+                placeholder="Pump Trigger (Based on soil moisture)"
+              />
+              <mat-error
+                *ngIf="
+                  settingsForm.controls['pumpMSTriggerOn'].hasError('required')
+                "
+              >
+                Is required.
+              </mat-error>
+              <mat-error
+                *ngIf="settingsForm.controls['pumpMSTriggerOn'].hasError('max')"
+              >
+                Must be less than or equal to 8
+              </mat-error>
+              <mat-error
+                *ngIf="settingsForm.controls['pumpMSTriggerOn'].hasError('min')"
+              >
+                Must be greater than 0
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  settingsForm.controls['pumpMSTriggerOn'].hasError('pattern')
+                "
+              >
+                Must be numeric.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <!-- Turn off pump if it is over this soil moisture value -->
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="pumpMSBlock"
+                placeholder="Pump Block (Based on soil moisture)"
+              />
+              <mat-error
+                *ngIf="settingsForm.controls['pumpMSBlock'].hasError('required')"
+              >
+                Is required.
+              </mat-error>
+              <mat-error
+                *ngIf="settingsForm.controls['pumpMSBlock'].hasError('max')"
+              >
+                Must be less than or equal to 10
+              </mat-error>
+              <mat-error
+                *ngIf="settingsForm.controls['pumpMSBlock'].hasError('min')"
+              >
+                Must be greater than 5
+              </mat-error>
+              <mat-error
+                *ngIf="settingsForm.controls['pumpMSBlock'].hasError('pattern')"
+              >
+                Must be numeric.
+              </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <!-- Times to turn on pump -->
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="pumpTimes"
+                placeholder="Pump run times (UMT)"
+              />
+            </mat-form-field>
+            <mat-error
+              *ngIf="settingsForm.controls['pumpTimes'].hasError('pattern')"
+            >
+              Must be in the form of a comma delimited list of 3-4 digit 24 hour
+              times. e.g. 1000,830,1700
+            </mat-error>
+          </div>
+        </div>
+  
+        <button mat-stroked-button (click)="update()">Update</button>
+      </div>
+    </mat-card-content></mat-card
+  >

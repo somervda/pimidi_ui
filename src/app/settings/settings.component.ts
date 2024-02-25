@@ -3,7 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SettingService } from '../services/setting.service';
+import { SettingService, Settings } from '../services/setting.service';
 
 @Component({
   selector: 'app-settings',
@@ -13,6 +13,7 @@ import { SettingService } from '../services/setting.service';
   styleUrl: './settings.component.scss',
 })
 export class SettingsComponent {
+  settings : Settings | undefined;
   settingsForm: FormGroup;
   cvMaxVolts: number = 5;
   cvMidiChannel: number = 1;

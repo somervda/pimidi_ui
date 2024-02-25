@@ -1,28 +1,34 @@
 <mat-card style="border: grey; margin: 5px">
-    <mat-card-content>
-      <div [formGroup]="settingsForm">
-        <div class="gridwrapper2">
-          <div>
-            <mat-form-field>
-              <input
-                matInput
-                formControlName="cvMaxVolts"
-                placeholder="Max. CV Volts"
-              />
-              </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field>
-              <input
-                matInput
-                formControlName="cvMidiChannel"
-                placeholder="CV midi channel"
-              />
-  
-            </mat-form-field>
-          </div>
-          </div>
-  
-          </div>
-    </mat-card-content></mat-card
-  >
+  <mat-card-content>
+    <div [formGroup]="settingsForm">
+      <div class="gridwrapper4">
+        <div>CV Max. Volts</div>
+        <div>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="cvMaxVolts"
+              placeholder="Max. CV Volts"
+            />
+            @if (settingsForm.controls['cvMaxVolts'].hasError('required')) {
+            <mat-error> Is required. </mat-error>
+            } @if (settingsForm.controls['cvMaxVolts'].hasError('min')) {
+            <mat-error> Minimum voltage is zero volts. </mat-error>
+            } @if (settingsForm.controls['cvMaxVolts'].hasError('max')) {
+            <mat-error> Maximum voltage is 12 volts </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div>CV Midi Channel</div>
+        <div>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="cvMidiChannel"
+              placeholder="CV midi channel"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div> </mat-card-content
+></mat-card>

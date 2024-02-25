@@ -1,28 +1,27 @@
 import { Injectable } from '@angular/core';
+// import { Globals } from '../globals';
 import { HttpClient } from '@angular/common/http';
-import { Globals } from '../globals';
-
 
 export interface Settings {
-  cvMaxVolts: number;
-  cvMidiChannel: number;
-  cvMinHertz: number;
-  midiDisplay: boolean;
-  midiDefaultChannel: number;
+  cv: {
+    max_volts: number;
+    midi_channel: number;
+    min_hertz: number;
+  };
+  midi: {
+    display: boolean;
+    default_channel: number;
+  };
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SettingService {
-  
-
-  constructor(private http: HttpClient,private globals : Globals) {}
+  constructor(private http: HttpClient) {}
 
   getSettings() {
-    let value = this.http.get<Settings>(
-      'http://' + this.globals.HOST + '/settings'
-    );
+    let value = this.http.get<Settings>('http://pimidi.local:8000/settings');
     return value;
   }
 }

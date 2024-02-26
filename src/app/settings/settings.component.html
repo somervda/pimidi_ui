@@ -2,7 +2,8 @@
   <mat-card-content>
     <div [formGroup]="settingsForm">
       <div class="gridwrapper4">
-        <div style="padding-top: 20px">CV Max. Volts</div>
+        <!-- CV Max Volts -->
+        <div>CV Max. Volts</div>
         <div>
           <mat-form-field>
             <input
@@ -19,6 +20,7 @@
             }
           </mat-form-field>
         </div>
+        <!-- CV Midi Channel -->
         <div>CV Midi Channel</div>
         <div>
           <mat-form-field>
@@ -27,8 +29,63 @@
               formControlName="cvMidiChannel"
               placeholder="CV midi channel"
             />
+            @if (settingsForm.controls['cvMidiChannel'].hasError('required')) {
+            <mat-error> Is required. </mat-error>
+            } @if (settingsForm.controls['cvMidiChannel'].hasError('min')) {
+            <mat-error> Minimum channel is 1</mat-error>
+            } @if (settingsForm.controls['cvMidiChannel'].hasError('max')) {
+            <mat-error> Maximum channel is 16</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- CV Min Hertz -->
+        <div>CV Min Hertz</div>
+        <div>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="cvMinHertz"
+              placeholder="Min. CV Hertz"
+            />
+            @if (settingsForm.controls['cvMinHertz'].hasError('required')) {
+            <mat-error> Is required. </mat-error>
+            } @if (settingsForm.controls['cvMinHertz'].hasError('min')) {
+            <mat-error> Minimum Hertz is 8. </mat-error>
+            } @if (settingsForm.controls['cvMinHertz'].hasError('max')) {
+            <mat-error> Maximum Hertz is 13000 </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- Midi Display -->
+        <div>Display Midi Notes?</div>
+        <div>
+          <mat-slide-toggle formControlName="midiDisplay"></mat-slide-toggle>
+        </div>
+        <!-- Midi default channel  -->
+        <div>Midi Default Channel</div>
+        <div>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="midiDefaultChannel"
+              placeholder="Default Midi Channel"
+            />
+            @if
+            (settingsForm.controls['midiDefaultChannel'].hasError('required')) {
+            <mat-error> Is required. </mat-error>
+            } @if (settingsForm.controls['midiDefaultChannel'].hasError('min'))
+            {
+            <mat-error> Minimum channel is 1</mat-error>
+            } @if (settingsForm.controls['midiDefaultChannel'].hasError('max'))
+            {
+            <mat-error> Maximum channel is 16</mat-error>
+            }
           </mat-form-field>
         </div>
       </div>
-    </div> </mat-card-content
-></mat-card>
+      <div>
+        <button mat-raised-button (click)="update()">Update</button>
+      </div>
+    </div>
+  </mat-card-content></mat-card
+>

@@ -16,23 +16,23 @@ export class SequencerComponent implements OnDestroy {
   noteOff$$: Subscription | undefined;
   midiReset$$: Subscription | undefined;
 
-  constructor(private playerService: PlayerService) {}
+  constructor(private playerService: PlayerService) { }
 
   noteOn(event: Event): void {
     let midiNote = parseInt((event.target as Element).id) + 40;
-    console.log('Note On:', midiNote);
-    this.noteOn$$ = this.playerService.midiNoteOn(midiNote).subscribe(() => {});
+    // console.log('Note On:', midiNote);
+    this.noteOn$$ = this.playerService.midiNoteOn(midiNote).subscribe(() => { });
   }
   noteOff(event: Event): void {
     let midiNote = parseInt((event.target as Element).id) + 40;
-    console.log('Note Off:', midiNote);
+    // console.log('Note Off:', midiNote);
     this.noteOff$$ = this.playerService
       .midiNoteOff(midiNote)
-      .subscribe(() => {});
+      .subscribe(() => { });
   }
 
   midiReset(): void {
-    this.midiReset$$ = this.playerService.midiNoteReset().subscribe(() => {});
+    this.midiReset$$ = this.playerService.midiNoteReset().subscribe(() => { });
   }
 
   ngOnDestroy(): void {

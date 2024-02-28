@@ -1,1 +1,115 @@
-<p>sequencer works!</p>
+<!-- Using keyboard display code from
+see https://youtu.be/vjco5yKZpU8?si=8-qLmQBHFbL2KIR7 and
+https://github.com/WebDevSimplified/JavaScript-Piano/tree/master  
+-->
+<mat-card style="border: grey; margin: 5px; background-color: #c4c6c9">
+  <mat-card-content>
+    <div class="piano">
+      <div
+        id="0"
+        class="key white"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="1"
+        class="key black"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="2"
+        class="key white"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="3"
+        class="key black"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="4"
+        class="key white"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="5"
+        class="key white"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="6"
+        class="key black"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="7"
+        class="key white"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="8"
+        class="key black"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="9"
+        class="key white"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="10"
+        class="key black"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="11"
+        class="key white"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="12"
+        class="key white"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="13"
+        class="key black"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="14"
+        class="key white"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="15"
+        class="key black"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+      <div
+        id="16"
+        class="key white"
+        (pointerdown)="noteOn($event)"
+        (pointerup)="noteOff($event)"
+      ></div>
+    </div>
+    <div>
+      <button mat-raised-button (click)="midiReset()">Reset</button>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -14,7 +14,6 @@ import { Subscription } from 'rxjs';
   imports: [
     ReactiveFormsModule,
     MatCardModule,
-    MatCardModule,
     MatInputModule,
     MatButtonModule,
     MatSlideToggleModule,

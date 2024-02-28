@@ -7,6 +7,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SettingService, Settings } from '../services/setting.service';
 import { Subscription } from 'rxjs';
+import { PlayerService } from '../services/player.service';
 
 @Component({
   selector: 'app-settings',
@@ -28,6 +29,7 @@ export class SettingsComponent implements OnDestroy {
   cvMinHertz$$: Subscription | undefined;
   midiDisplay$$: Subscription | undefined;
   midiDefaultChannel$$: Subscription | undefined;
+  cvSetValue$$: Subscription | undefined;
   settings: Settings = {
     cv: {
       max_volts: 5,
@@ -41,7 +43,10 @@ export class SettingsComponent implements OnDestroy {
   };
   settingsForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private settingService: SettingService) {
+  constructor(private fb: FormBuilder, 
+    private settingService: SettingService,
+    private playerService: PlayerService) 
+    {
     this.settingService.getSettings().subscribe((settings) => {
       this.settings = settings;
       this.settingsForm.setValue({
@@ -72,6 +77,12 @@ export class SettingsComponent implements OnDestroy {
         [Validators.required, Validators.min(1), Validators.max(16)],
       ],
     });
+  }
+
+  cv(value:number,on:boolean){
+    this.cvSetValue$$ = this.playerService.cvSetValue(value,on)
+    .subscribe(() => {});
+
   }
 
   update(): void {
@@ -129,6 +140,9 @@ export class SettingsComponent implements OnDestroy {
     }
     if (this.midiDefaultChannel$$) {
       this.midiDefaultChannel$$.unsubscribe();
+    }
+    if (this.cvSetValue$$) {
+      this.cvSetValue$$.unsubscribe();
     }
   }
 }

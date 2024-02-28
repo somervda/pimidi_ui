@@ -6,11 +6,7 @@
         <div>CV Max. Volts</div>
         <div>
           <mat-form-field>
-            <input
-              matInput
-              formControlName="cvMaxVolts"
-              placeholder="Max. CV Volts"
-            />
+            <input matInput formControlName="cvMaxVolts" placeholder="Max. CV Volts" />
             @if (settingsForm.controls['cvMaxVolts'].hasError('required')) {
             <mat-error> Is required. </mat-error>
             } @if (settingsForm.controls['cvMaxVolts'].hasError('min')) {
@@ -24,11 +20,7 @@
         <div>CV Midi Channel</div>
         <div>
           <mat-form-field>
-            <input
-              matInput
-              formControlName="cvMidiChannel"
-              placeholder="CV midi channel"
-            />
+            <input matInput formControlName="cvMidiChannel" placeholder="CV midi channel" />
             @if (settingsForm.controls['cvMidiChannel'].hasError('required')) {
             <mat-error> Is required. </mat-error>
             } @if (settingsForm.controls['cvMidiChannel'].hasError('min')) {
@@ -42,11 +34,7 @@
         <div>CV Min Hertz</div>
         <div>
           <mat-form-field>
-            <input
-              matInput
-              formControlName="cvMinHertz"
-              placeholder="Min. CV Hertz"
-            />
+            <input matInput formControlName="cvMinHertz" placeholder="Min. CV Hertz" />
             @if (settingsForm.controls['cvMinHertz'].hasError('required')) {
             <mat-error> Is required. </mat-error>
             } @if (settingsForm.controls['cvMinHertz'].hasError('min')) {
@@ -65,11 +53,7 @@
         <div>Midi Default Channel</div>
         <div>
           <mat-form-field>
-            <input
-              matInput
-              formControlName="midiDefaultChannel"
-              placeholder="Default Midi Channel"
-            />
+            <input matInput formControlName="midiDefaultChannel" placeholder="Default Midi Channel" />
             @if
             (settingsForm.controls['midiDefaultChannel'].hasError('required')) {
             <mat-error> Is required. </mat-error>
@@ -83,9 +67,14 @@
           </mat-form-field>
         </div>
       </div>
-      <div>
+      <div class="gridwrapper2" style="width:100%">
+        <div><button style="padding-top: 10px;width:300px; align-items: center;" mat-raised-button
+            (mousedown)="cv(0,true)" (mouseup)="cv(0,false)">CV Calabrator: Set Minimum Output</button></div>
+        <div><button style="padding-top: 10px;width:300px; align-items: center;" mat-raised-button
+            (mousedown)="cv(4095,true)" (mouseup)="cv(4095,false)">CV Calibrator: Set Maximum Output</button></div>
+      </div>
+      <div style="padding-top: 10px;">
         <button mat-raised-button (click)="update()">Update</button>
       </div>
     </div>
-  </mat-card-content></mat-card
->
+  </mat-card-content></mat-card>

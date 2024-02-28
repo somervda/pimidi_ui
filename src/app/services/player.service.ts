@@ -27,4 +27,12 @@ export class PlayerService {
     );
     return result;
   }
+
+  cvSetValue(value:number,on:boolean) {
+    console.log("cvSetValue:",value,on);
+    let result = this.http.get<boolean>(
+      'http://' + Globals.HOSTANDPORT + '/cvSetValue/' + value.toString() + '/' + on?'1':'0'
+    );
+    return result;
+  }
 }

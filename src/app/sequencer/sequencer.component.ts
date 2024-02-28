@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { PlayerService } from '../services/player.service';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './sequencer.component.html',
   styleUrl: './sequencer.component.scss',
 })
-export class SequencerComponent {
+export class SequencerComponent implements OnDestroy {
   noteOn$$: Subscription | undefined;
   noteOff$$: Subscription | undefined;
   midiReset$$: Subscription | undefined;
@@ -33,5 +33,17 @@ export class SequencerComponent {
 
   midiReset(): void {
     this.midiReset$$ = this.playerService.midiNoteReset().subscribe(() => {});
+  }
+
+  ngOnDestroy(): void {
+    if (this.midiReset$$) {
+      this.midiReset$$.unsubscribe();
+    }
+    if (this.noteOn$$) {
+      this.noteOn$$.unsubscribe();
+    }
+    if (this.noteOff$$) {
+      this.noteOff$$.unsubscribe();
+    }
   }
 }

@@ -1,12 +1,19 @@
-<mat-card style="border: grey; margin: 5px; background-color: #c4c6c9">
+<mat-card style="border: grey; margin: 5px; background-color: #f5f5f5">
   <mat-card-content>
     <div [formGroup]="settingsForm">
       <div class="gridwrapper4">
         <!-- CV Max Volts -->
-        <div>CV Max. Volts</div>
+        <div style="vertical-align: middle">
+          CV Max. Volts @if (settingsForm.controls['cvMaxVolts'].touched) { * }
+        </div>
         <div>
           <mat-form-field>
-            <input matInput formControlName="cvMaxVolts" placeholder="Max. CV Volts" />
+            <input
+              matInput
+              formControlName="cvMaxVolts"
+              placeholder="Max. CV Volts"
+            />
+
             @if (settingsForm.controls['cvMaxVolts'].hasError('required')) {
             <mat-error> Is required. </mat-error>
             } @if (settingsForm.controls['cvMaxVolts'].hasError('min')) {
@@ -17,10 +24,17 @@
           </mat-form-field>
         </div>
         <!-- CV Midi Channel -->
-        <div>CV Midi Channel</div>
+        <div>
+          CV Midi Channel @if (settingsForm.controls['cvMidiChannel'].touched) {
+          * }
+        </div>
         <div>
           <mat-form-field>
-            <input matInput formControlName="cvMidiChannel" placeholder="CV midi channel" />
+            <input
+              matInput
+              formControlName="cvMidiChannel"
+              placeholder="CV midi channel"
+            />
             @if (settingsForm.controls['cvMidiChannel'].hasError('required')) {
             <mat-error> Is required. </mat-error>
             } @if (settingsForm.controls['cvMidiChannel'].hasError('min')) {
@@ -31,10 +45,16 @@
           </mat-form-field>
         </div>
         <!-- CV Min Hertz -->
-        <div>CV Min Hertz</div>
+        <div>
+          CV Min Hertz @if (settingsForm.controls['cvMinHertz'].touched) { * }
+        </div>
         <div>
           <mat-form-field>
-            <input matInput formControlName="cvMinHertz" placeholder="Min. CV Hertz" />
+            <input
+              matInput
+              formControlName="cvMinHertz"
+              placeholder="Min. CV Hertz"
+            />
             @if (settingsForm.controls['cvMinHertz'].hasError('required')) {
             <mat-error> Is required. </mat-error>
             } @if (settingsForm.controls['cvMinHertz'].hasError('min')) {
@@ -45,15 +65,25 @@
           </mat-form-field>
         </div>
         <!-- Midi Display -->
-        <div>Display Midi Notes?</div>
+        <div>
+          Display Midi Notes? @if (settingsForm.controls['midiDisplay'].touched)
+          { * }
+        </div>
         <div>
           <mat-slide-toggle formControlName="midiDisplay"></mat-slide-toggle>
         </div>
         <!-- Midi default channel  -->
-        <div>Midi Default Channel</div>
+        <div>
+          Midi Default Channel @if
+          (settingsForm.controls['midiDefaultChannel'].touched) { * }
+        </div>
         <div>
           <mat-form-field>
-            <input matInput formControlName="midiDefaultChannel" placeholder="Default Midi Channel" />
+            <input
+              matInput
+              formControlName="midiDefaultChannel"
+              placeholder="Default Midi Channel"
+            />
             @if
             (settingsForm.controls['midiDefaultChannel'].hasError('required')) {
             <mat-error> Is required. </mat-error>
@@ -67,14 +97,31 @@
           </mat-form-field>
         </div>
       </div>
-      <div class="gridwrapper2" style="width:100%">
-        <div><button style="padding-top: 10px;width:300px; align-items: center;" mat-raised-button
-            (mousedown)="cv(0,true)" (mouseup)="cv(0,false)">CV Calabrator: Set Minimum Output</button></div>
-        <div><button style="padding-top: 10px;width:300px; align-items: center;" mat-raised-button
-            (mousedown)="cv(4095,true)" (mouseup)="cv(4095,false)">CV Calibrator: Set Maximum Output</button></div>
+      <div class="gridwrapper2" style="width: 100%">
+        <div>
+          <button
+            style="padding-top: 10px; width: 300px; align-items: center"
+            mat-raised-button
+            (mousedown)="cv(0, true)"
+            (mouseup)="cv(0, false)"
+          >
+            CV Calabrator: Set Minimum Output
+          </button>
+        </div>
+        <div>
+          <button
+            style="padding-top: 10px; width: 300px; align-items: center"
+            mat-raised-button
+            (mousedown)="cv(4095, true)"
+            (mouseup)="cv(4095, false)"
+          >
+            CV Calibrator: Set Maximum Output
+          </button>
+        </div>
       </div>
-      <div style="padding-top: 10px;">
+      <div style="padding-top: 10px">
         <button mat-raised-button (click)="update()">Update</button>
       </div>
     </div>
-  </mat-card-content></mat-card>
+  </mat-card-content></mat-card
+>

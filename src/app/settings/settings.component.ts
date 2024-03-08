@@ -2,6 +2,8 @@ import { Component, OnDestroy } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOption } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,6 +20,8 @@ import { PlayerService } from '../services/player.service';
     MatInputModule,
     MatButtonModule,
     MatSlideToggleModule,
+    MatFormFieldModule,
+    MatOption,
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
@@ -43,10 +47,11 @@ export class SettingsComponent implements OnDestroy {
   };
   settingsForm: FormGroup;
 
-  constructor(private fb: FormBuilder, 
+  constructor(
+    private fb: FormBuilder,
     private settingService: SettingService,
-    private playerService: PlayerService) 
-    {
+    private playerService: PlayerService
+  ) {
     this.settingService.getSettings().subscribe((settings) => {
       this.settings = settings;
       this.settingsForm.setValue({
@@ -79,10 +84,10 @@ export class SettingsComponent implements OnDestroy {
     });
   }
 
-  cv(value:number,on:boolean){
-    this.cvSetValue$$ = this.playerService.cvSetValue(value,on)
-    .subscribe(() => {});
-
+  cv(value: number, on: boolean) {
+    this.cvSetValue$$ = this.playerService
+      .cvSetValue(value, on)
+      .subscribe(() => {});
   }
 
   update(): void {

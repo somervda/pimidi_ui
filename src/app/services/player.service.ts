@@ -28,10 +28,19 @@ export class PlayerService {
     return result;
   }
 
-  cvSetValue(value:number,on:boolean) {
-    console.log("cvSetValue:",value,on);
+  cvSetValue(value: number, on: boolean) {
+    console.log('cvSetValue:', value, on);
+    let onValue = '0';
+    if (on) {
+      onValue = '1';
+    }
     let result = this.http.get<boolean>(
-      'http://' + Globals.HOSTANDPORT + '/cvSetValue/' + value.toString() + '/' + on?'1':'0'
+      'http://' +
+        Globals.HOSTANDPORT +
+        '/cvSetValue/' +
+        value.toString() +
+        '/' +
+        onValue
     );
     return result;
   }

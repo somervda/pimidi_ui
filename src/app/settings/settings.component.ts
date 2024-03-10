@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatOption } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -21,6 +22,7 @@ import { PlayerService } from '../services/player.service';
     MatButtonModule,
     MatSlideToggleModule,
     MatFormFieldModule,
+    MatTooltipModule,
     MatOption,
   ],
   templateUrl: './settings.component.html',

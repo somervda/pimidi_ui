@@ -45,7 +45,7 @@
           </mat-form-field>
         </div>
         <!-- CV Min Hertz -->
-        <div>
+        <div style="padding-top: 10px;">
           CV Min Hertz @if (settingsForm.controls['cvMinHertz'].touched) { * }
         </div>
         <div>
@@ -65,19 +65,19 @@
           </mat-form-field>
         </div>
         <!-- Midi Display -->
-        <div>
+        <div style="padding-top: 10px;">
           Display Midi Notes? @if (settingsForm.controls['midiDisplay'].touched)
           { * }
         </div>
-        <div>
+        <div >
           <mat-slide-toggle formControlName="midiDisplay"></mat-slide-toggle>
         </div>
         <!-- Midi default channel  -->
-        <div>
+        <div style="padding-top: 10px;">
           Midi Default Channel @if
           (settingsForm.controls['midiDefaultChannel'].touched) { * }
         </div>
-        <div>
+        <div >
           <mat-form-field>
             <input
               matInput
@@ -98,24 +98,26 @@
         </div>
       </div>
       <div class="gridwrapper2" style="width: 100%">
-        <div>
+        <div style="padding-top: 10px;">
           <button
-            style="padding-top: 10px; width: 300px; align-items: center"
+            style="width: 350px; align-items: center"
             mat-raised-button
+            matTooltip="Press and hold to set voltage"
             (mousedown)="cv(0, true)"
             (mouseup)="cv(0, false)"
           >
-            CV Calabrator: Set Minimum Output
+            CV Calabrator: Set Minimum Voltage
           </button>
         </div>
-        <div>
+        <div style="padding-top: 10px;">
           <button
-            style="padding-top: 10px; width: 300px; align-items: center"
+            style=" width: 350px; align-items: center"
             mat-raised-button
+            matTooltip="Press and hold to set voltage"
             (mousedown)="cv(4095, true)"
             (mouseup)="cv(4095, false)"
           >
-            CV Calibrator: Set Maximum Output
+            CV Calibrator: Set Maximum Voltage
           </button>
         </div>
       </div>
